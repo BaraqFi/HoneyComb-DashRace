@@ -1,6 +1,6 @@
 import "./globals.css"
 import { ReactNode } from "react"
-import NavBar from "@/components/NavBar"
+/* import NavBar from "@/components/NavBar" */
 import WalletConnectionProvider from "@/components/walletProvider"
 /* import { UserProvider } from "@/components/UserContext" */
 
@@ -18,7 +18,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body className="bg-black text-white min-h-screen font-sans">
         <WalletConnectionProvider>
           {/* <UserProvider> */}
-            <NavBar />
+            {/* <NavBar /> */}
             <main className="flex flex-col items-center pt-8">{children}</main>
           {/* </UserProvider> */}
         </WalletConnectionProvider>

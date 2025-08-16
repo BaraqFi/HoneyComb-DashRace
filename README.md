@@ -1,8 +1,55 @@
 # Dash Race 🚗 – Web3 Game MVP
 
-A fully on-chain, Solana-powered racing game MVP built with Next.js, Phaser, and Honeycomb Protocol
+A fully on-chain, Solana-powered racing game MVP built with Next.js, Phaser, and Honeycomb Protocol.
+Its a classic retro 3-lane obstacle dodging, coin-collecting race game.
 
 Track your racing stats, earn your place on the leaderboard, and showcase your on-chain wallet profile!
+
+## 📹 Video Walkthrough
+
+[Google Drive](https://drive.google.com/file/d/1QBzPSqX8PN_f3JgovudqebJ24wSYZ6U2/view?usp=drivesdk)
+
+---
+
+## How Honeycomb Powers Dash Race
+
+Dash Race is a web3 racing game fully integrated with the Honeycomb Protocol, providing seamless on-chain identity, persistent player stats, and a public leaderboard—all without managing your own backend.
+
+Player Flow
+
+Guest vs Registered Play:
+
+You can play instantly as a guest (no wallet required), but stats won’t be saved.
+
+To save your progress and appear on the leaderboard, connect your Solana wallet and register.
+
+Onboarding:
+
+When you click “Play Game” with your wallet connected, the app guides you through registration:
+
+Username Entry: You choose your username.
+
+User & Profile Creation: A Honeycomb user and profile are created, all on-chain and owned by your wallet.
+
+(Future) Character Minting: You’ll mint a simple on-chain character (admin-assisted), tracked natively by Honeycomb.
+
+(Future) Resources: “Fuel” (a non-fungible Honeycomb resource) is planned for missions and rewards.
+
+Game Session & Stats:
+
+After every race session, if you click “Save & Exit,” a modal pops up to let you save your stats (score and miles).
+
+These stats are fetched from Honeycomb, summed with your latest session, and pushed back on-chain—ranking you on the leaderboard.
+
+Leaderboard:
+
+Leaderboard rankings are calculated from Honeycomb profile data—public, transparent, and live.
+
+Missions & Idle Progression (Planned):
+
+Beyond active gameplay, Honeycomb’s mission pools will allow players to send their characters on “idle” missions (e.g. spend Fuel to earn smaller, passive stats over time). DAO-driven missions will unlock unique NFTs with benefits.
+
+All data (user, profile, character, resources, and mission progress) lives on-chain, managed by Honeycomb. No centralized servers—everything is verifiable, upgradable, and composable for future features.
 
 ---
 

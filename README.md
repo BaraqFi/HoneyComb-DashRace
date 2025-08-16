@@ -158,7 +158,7 @@ Visit [http://localhost:3000](http://localhost:3000) to play.
 
 ## Author
 
-* [BaraqFi] (https://x.com/BaraqFi)
+* [BaraqFi](https://x.com/BaraqFi)
   Built for Honeycomb Protocol + Solana demo MVP.
 
 ---

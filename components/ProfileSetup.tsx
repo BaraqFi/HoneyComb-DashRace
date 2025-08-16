@@ -1,9 +1,15 @@
-"use client"
-import { useEffect, useState } from "react"
-import { useWallet } from "@solana/wallet-adapter-react"
-import { client } from "@/utils/client"
-import bs58 from "bs58"
-import { sendClientTransactions } from "@honeycomb-protocol/edge-client/client/walletHelpers"
+"use client";
+import { useEffect, useState } from "react";
+import { useWallet } from "@solana/wallet-adapter-react";
+import { client } from "@/utils/client";
+import bs58 from "bs58";
+import { sendClientTransactions } from "@honeycomb-protocol/edge-client/client/walletHelpers";
+
+// --- Accent colors
+const accent = "#a763e6";
+const accent2 = "#d7a3ff";
+const accentText = "#c6baff";
+const cardBg = "rgba(40, 18, 54, 0.97)";
 
 export default function ProfileSetup({ onComplete }: { onComplete?: () => void }) {
   const wallet = useWallet()
@@ -197,256 +203,182 @@ export default function ProfileSetup({ onComplete }: { onComplete?: () => void }
     }
   }
 
-  // --- Styles and UI remain unchanged below this line ---
-
-  const styles = {
-    container: {
-      fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
-      minHeight: "100vh",
-      background: "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      padding: "20px",
-    },
-    modal: {
-      background: "rgba(255, 255, 255, 0.95)",
-      backdropFilter: "blur(20px)",
-      borderRadius: "24px",
-      padding: "48px",
-      maxWidth: "480px",
-      width: "100%",
-      boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
-      border: "1px solid rgba(255, 255, 255, 0.2)",
-      position: "relative" as const,
-    },
-    header: {
-      textAlign: "center" as const,
-      marginBottom: "40px",
-    },
-    title: {
-      fontSize: "28px",
-      fontWeight: "700",
-      color: "#1a1a2e",
-      marginBottom: "8px",
-      letterSpacing: "-0.02em",
-    },
-    subtitle: {
-      fontSize: "16px",
-      color: "#6b7280",
-      fontWeight: "400",
-    },
-    stepContainer: {
-      textAlign: "center" as const,
-      minHeight: "200px",
-      display: "flex",
-      flexDirection: "column" as const,
-      justifyContent: "center",
-      alignItems: "center",
-    },
-    stepTitle: {
-      fontSize: "20px",
-      fontWeight: "600",
-      color: "#374151",
-      marginBottom: "24px",
-    },
-    input: {
-      width: "100%",
-      padding: "16px 20px",
-      fontSize: "16px",
-      border: "2px solid #e5e7eb",
-      borderRadius: "12px",
-      outline: "none",
-      transition: "all 0.2s ease",
-      fontFamily: "inherit",
-      marginBottom: "24px",
-      background: "#ffffff",
-    },
-    inputFocus: {
-      borderColor: "#8b5cf6",
-      boxShadow: "0 0 0 3px rgba(139, 92, 246, 0.1)",
-    },
-    button: {
-      background: "linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)",
-      color: "white",
-      border: "none",
-      padding: "16px 32px",
-      fontSize: "16px",
-      fontWeight: "600",
-      borderRadius: "12px",
-      cursor: "pointer",
-      transition: "all 0.2s ease",
-      fontFamily: "inherit",
-      minWidth: "200px",
-      position: "relative" as const,
-    },
-    buttonHover: {
-      transform: "translateY(-2px)",
-      boxShadow: "0 10px 25px -5px rgba(139, 92, 246, 0.4)",
-    },
-    buttonDisabled: {
-      background: "#d1d5db",
-      cursor: "not-allowed",
-      transform: "none",
-      boxShadow: "none",
-    },
-    status: {
-      marginTop: "20px",
-      padding: "12px 16px",
-      borderRadius: "8px",
-      fontSize: "14px",
-      fontWeight: "500",
-      textAlign: "center" as const,
-    },
-    statusSuccess: {
-      background: "#dcfce7",
-      color: "#166534",
-      border: "1px solid #bbf7d0",
-    },
-    statusError: {
-      background: "#fef2f2",
-      color: "#dc2626",
-      border: "1px solid #fecaca",
-    },
-    statusInfo: {
-      background: "#eff6ff",
-      color: "#2563eb",
-      border: "1px solid #bfdbfe",
-    },
-    progressBar: {
-      width: "100%",
-      height: "4px",
-      background: "#e5e7eb",
-      borderRadius: "2px",
-      marginBottom: "32px",
-      overflow: "hidden",
-    },
-    progressFill: {
-      height: "100%",
-      background: "linear-gradient(90deg, #8b5cf6, #7c3aed)",
-      borderRadius: "2px",
-      transition: "width 0.3s ease",
-    },
-    stepIndicator: {
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      gap: "8px",
-      marginBottom: "32px",
-    },
-    stepDot: {
-      width: "12px",
-      height: "12px",
-      borderRadius: "50%",
-      background: "#e5e7eb",
-      transition: "all 0.2s ease",
-    },
-    stepDotActive: {
-      background: "#8b5cf6",
-      transform: "scale(1.2)",
-    },
-    stepDotComplete: {
-      background: "#10b981",
-    },
-    loadingSpinner: {
-      width: "20px",
-      height: "20px",
-      border: "2px solid rgba(255, 255, 255, 0.3)",
-      borderTop: "2px solid white",
-      borderRadius: "50%",
-      animation: "spin 1s linear infinite",
-      marginRight: "8px",
-    },
-  }
-
+  // --- Styles for our UI theme ---
   const getProgress = () => {
     switch (currentStep) {
-      case "username":
-        return 0
-      case "createUser":
-        return 25
-      case "authenticate":
-        return 50
-      case "createProfile":
-        return 75
-      case "complete":
-        return 100
-      default:
-        return 0
+      case "username": return 0;
+      case "createUser": return 25;
+      case "authenticate": return 50;
+      case "createProfile": return 75;
+      case "complete": return 100;
+      default: return 0;
     }
-  }
-
+  };
   const getStepStatus = (step: string) => {
-    const steps = ["username", "createUser", "authenticate", "createProfile"]
-    const currentIndex = steps.indexOf(currentStep)
-    const stepIndex = steps.indexOf(step)
-
-    if (stepIndex < currentIndex) return "complete"
-    if (stepIndex === currentIndex) return "active"
-    return "inactive"
-  }
+    const steps = ["username", "createUser", "authenticate", "createProfile"];
+    const currentIndex = steps.indexOf(currentStep);
+    const stepIndex = steps.indexOf(step);
+    if (stepIndex < currentIndex) return "complete";
+    if (stepIndex === currentIndex) return "active";
+    return "inactive";
+  };
 
   return (
-    <div style={styles.container}>
+    <div style={{
+      fontFamily: "Orbitron, monospace",
+      minHeight: "100vh",
+      background: "linear-gradient(135deg, #21152e 0%, #381c4a 65%, #2e1848 100%)",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      padding: 24,
+    }}>
       <style jsx>{`
-        @keyframes spin {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
-        }
+        @keyframes spin { 0% { transform: rotate(0deg);} 100% { transform: rotate(360deg);} }
       `}</style>
-
-      <div style={styles.modal}>
-        <div style={styles.header}>
-          <h1 style={styles.title}>Welcome to Dash Race</h1>
-          <p style={styles.subtitle}>Set up your gaming profile to get started</p>
+      <div style={{
+        background: cardBg,
+        border: `2.5px solid ${accent}`,
+        borderRadius: 22,
+        boxShadow: `0 8px 40px ${accent}44, 0 2px 16px #0006`,
+        padding: "2.7rem 2rem 2.1rem 2rem",
+        maxWidth: 420,
+        width: "100%",
+        color: "#fff",
+        position: "relative",
+      }}>
+        <div style={{ textAlign: "center", marginBottom: 32 }}>
+          <h1 style={{
+            fontSize: "2rem",
+            fontWeight: 900,
+            marginBottom: 8,
+            background: `linear-gradient(90deg, ${accent} 10%, ${accent2} 80%)`,
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            letterSpacing: 2,
+            textShadow: `0 1.5px 10px ${accent}44`
+          }}>
+            Welcome to Dash Race
+          </h1>
+          <p style={{
+            fontSize: 15,
+            color: accentText,
+            fontWeight: 500,
+            opacity: 0.92,
+            letterSpacing: 1,
+            marginTop: 4,
+          }}>Set up your gaming profile to get started</p>
         </div>
 
-        <div style={styles.progressBar}>
-          <div style={{ ...styles.progressFill, width: `${getProgress()}%` }} />
+        {/* Progress Bar */}
+        <div style={{
+          width: "100%",
+          height: 5,
+          background: "#2d183c",
+          borderRadius: 2,
+          marginBottom: 22,
+          overflow: "hidden",
+        }}>
+          <div style={{
+            height: "100%",
+            background: `linear-gradient(90deg, ${accent2}, ${accent})`,
+            borderRadius: 2,
+            width: `${getProgress()}%`,
+            transition: "width 0.3s",
+          }} />
         </div>
 
-        <div style={styles.stepIndicator}>
-          {["username", "createUser", "authenticate", "createProfile"].map((step, index) => {
-            const status = getStepStatus(step)
+        {/* Step dots */}
+        <div style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: 14,
+          marginBottom: 24,
+        }}>
+          {["username", "createUser", "authenticate", "createProfile"].map((step, idx) => {
+            const status = getStepStatus(step);
             return (
-              <div
-                key={step}
+              <div key={step}
                 style={{
-                  ...styles.stepDot,
-                  ...(status === "active" ? styles.stepDotActive : {}),
-                  ...(status === "complete" ? styles.stepDotComplete : {}),
+                  width: 15, height: 15, borderRadius: "50%",
+                  background: status === "complete"
+                    ? "#10b981"
+                    : status === "active"
+                      ? accent
+                      : "#47355c",
+                  border: status === "active" ? `2.2px solid ${accent2}` : "none",
+                  boxShadow: status === "active" ? `0 2px 10px ${accent2}55` : undefined,
+                  transform: status === "active" ? "scale(1.18)" : undefined,
+                  transition: "all 0.2s",
                 }}
               />
             )
           })}
         </div>
 
-        <div style={styles.stepContainer}>
+        <div style={{
+          minHeight: 128,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          textAlign: "center"
+        }}>
           {currentStep === "checking" && (
-            <div className="w-full text-center text-purple-300 py-8 font-semibold text-lg min-h-[120px]">
+            <div style={{ color: accent2, fontWeight: 700, fontSize: "1.07rem", padding: "2.5rem 0" }}>
               Checking for existing profile...
             </div>
           )}
 
           {currentStep === "username" && (
             <>
-              <h2 style={styles.stepTitle}>Choose Your Username</h2>
+              <h2 style={{
+                fontSize: "1.3rem",
+                fontWeight: 800,
+                color: accent,
+                marginBottom: 17,
+                letterSpacing: 1.1,
+              }}>Choose Your Username</h2>
               <input
                 type="text"
                 value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                onChange={e => setUsername(e.target.value)}
                 placeholder="Enter your gaming username"
                 maxLength={30}
-                style={styles.input}
-                onKeyPress={(e) => e.key === "Enter" && handleUsernameSubmit()}
+                style={{
+                  width: "100%",
+                  padding: "0.9rem 1.1rem",
+                  fontSize: "1.04rem",
+                  border: `2.2px solid ${accent}`,
+                  borderRadius: 13,
+                  outline: "none",
+                  fontFamily: "Orbitron, monospace",
+                  background: "#201832",
+                  color: "#fff",
+                  marginBottom: 22,
+                  letterSpacing: 0.6,
+                }}
+                onKeyPress={e => e.key === "Enter" && handleUsernameSubmit()}
                 autoFocus
               />
               <button
                 onClick={handleUsernameSubmit}
                 disabled={!username.trim()}
                 style={{
-                  ...styles.button,
-                  ...(username.trim() ? {} : styles.buttonDisabled),
+                  width: "100%",
+                  background: `linear-gradient(90deg, ${accent2} 0%, ${accent} 100%)`,
+                  color: "#1b0f28",
+                  border: "none",
+                  padding: "1.1rem 0",
+                  fontSize: "1.11rem",
+                  fontWeight: 700,
+                  borderRadius: 13,
+                  cursor: username.trim() ? "pointer" : "not-allowed",
+                  boxShadow: username.trim() ? `0 4px 16px ${accent2}23` : "none",
+                  fontFamily: "Orbitron, monospace",
+                  opacity: username.trim() ? 1 : 0.7,
+                  letterSpacing: 1.1,
+                  marginBottom: 6,
                 }}
               >
                 Continue
@@ -456,19 +388,37 @@ export default function ProfileSetup({ onComplete }: { onComplete?: () => void }
 
           {currentStep === "createUser" && (
             <>
-              <h2 style={styles.stepTitle}>Create Your Account</h2>
-              <p style={{ color: "#6b7280", marginBottom: "24px", fontSize: "14px" }}>
+              <h2 style={{
+                fontSize: "1.23rem", fontWeight: 800, color: accent, marginBottom: 13, letterSpacing: 1.1
+              }}>Create Your Account</h2>
+              <p style={{
+                color: accentText, fontWeight: 500, opacity: 0.88, marginBottom: 21, fontSize: "0.98rem"
+              }}>
                 Hello <strong>{username}</strong>! Let's create your blockchain account.
               </p>
               <button
                 onClick={createUser}
                 disabled={loading || !wallet.publicKey}
                 style={{
-                  ...styles.button,
-                  ...(loading || !wallet.publicKey ? styles.buttonDisabled : {}),
+                  width: "100%",
+                  background: `linear-gradient(90deg, ${accent2} 0%, ${accent} 100%)`,
+                  color: "#1b0f28",
+                  border: "none",
+                  padding: "1.1rem 0",
+                  fontSize: "1.07rem",
+                  fontWeight: 700,
+                  borderRadius: 13,
+                  cursor: loading || !wallet.publicKey ? "not-allowed" : "pointer",
+                  fontFamily: "Orbitron, monospace",
+                  opacity: loading || !wallet.publicKey ? 0.6 : 1,
+                  letterSpacing: 1.1,
+                  boxShadow: loading || !wallet.publicKey ? "none" : `0 4px 16px ${accent2}1a`,
                 }}
               >
-                {loading && <div style={styles.loadingSpinner} />}
+                {loading &&
+                  <span style={{
+                    width: 18, height: 18, border: "2px solid #eee2", borderTop: `2px solid ${accent2}`, borderRadius: "50%", display: "inline-block", marginRight: 7, animation: "spin 1s linear infinite"
+                  }} />}
                 Create User
               </button>
             </>
@@ -476,19 +426,37 @@ export default function ProfileSetup({ onComplete }: { onComplete?: () => void }
 
           {currentStep === "authenticate" && (
             <>
-              <h2 style={styles.stepTitle}>Authenticate Your Account</h2>
-              <p style={{ color: "#6b7280", marginBottom: "24px", fontSize: "14px" }}>
+              <h2 style={{
+                fontSize: "1.23rem", fontWeight: 800, color: accent, marginBottom: 13, letterSpacing: 1.1
+              }}>Authenticate Your Account</h2>
+              <p style={{
+                color: accentText, fontWeight: 500, opacity: 0.88, marginBottom: 21, fontSize: "0.98rem"
+              }}>
                 Sign a message to verify your identity and secure your account.
               </p>
               <button
                 onClick={authenticateUser}
                 disabled={loading || !wallet.publicKey}
                 style={{
-                  ...styles.button,
-                  ...(loading || !wallet.publicKey ? styles.buttonDisabled : {}),
+                  width: "100%",
+                  background: `linear-gradient(90deg, ${accent2} 0%, ${accent} 100%)`,
+                  color: "#1b0f28",
+                  border: "none",
+                  padding: "1.1rem 0",
+                  fontSize: "1.07rem",
+                  fontWeight: 700,
+                  borderRadius: 13,
+                  cursor: loading || !wallet.publicKey ? "not-allowed" : "pointer",
+                  fontFamily: "Orbitron, monospace",
+                  opacity: loading || !wallet.publicKey ? 0.6 : 1,
+                  letterSpacing: 1.1,
+                  boxShadow: loading || !wallet.publicKey ? "none" : `0 4px 16px ${accent2}1a`,
                 }}
               >
-                {loading && <div style={styles.loadingSpinner} />}
+                {loading &&
+                  <span style={{
+                    width: 18, height: 18, border: "2px solid #eee2", borderTop: `2px solid ${accent2}`, borderRadius: "50%", display: "inline-block", marginRight: 7, animation: "spin 1s linear infinite"
+                  }} />}
                 Authenticate User
               </button>
             </>
@@ -496,19 +464,37 @@ export default function ProfileSetup({ onComplete }: { onComplete?: () => void }
 
           {currentStep === "createProfile" && (
             <>
-              <h2 style={styles.stepTitle}>Create Game Profile</h2>
-              <p style={{ color: "#6b7280", marginBottom: "24px", fontSize: "14px" }}>
+              <h2 style={{
+                fontSize: "1.23rem", fontWeight: 800, color: accent, marginBottom: 13, letterSpacing: 1.1
+              }}>Create Game Profile</h2>
+              <p style={{
+                color: accentText, fontWeight: 500, opacity: 0.88, marginBottom: 21, fontSize: "0.98rem"
+              }}>
                 Final step! Create your gaming profile to start racing.
               </p>
               <button
                 onClick={createProfile}
                 disabled={loading || !accessToken || !username}
                 style={{
-                  ...styles.button,
-                  ...(loading || !accessToken || !username ? styles.buttonDisabled : {}),
+                  width: "100%",
+                  background: `linear-gradient(90deg, ${accent2} 0%, ${accent} 100%)`,
+                  color: "#1b0f28",
+                  border: "none",
+                  padding: "1.1rem 0",
+                  fontSize: "1.07rem",
+                  fontWeight: 700,
+                  borderRadius: 13,
+                  cursor: loading || !accessToken || !username ? "not-allowed" : "pointer",
+                  fontFamily: "Orbitron, monospace",
+                  opacity: loading || !accessToken || !username ? 0.6 : 1,
+                  letterSpacing: 1.1,
+                  boxShadow: loading || !accessToken || !username ? "none" : `0 4px 16px ${accent2}1a`,
                 }}
               >
-                {loading && <div style={styles.loadingSpinner} />}
+                {loading &&
+                  <span style={{
+                    width: 18, height: 18, border: "2px solid #eee2", borderTop: `2px solid ${accent2}`, borderRadius: "50%", display: "inline-block", marginRight: 7, animation: "spin 1s linear infinite"
+                  }} />}
                 Create Game Profile
               </button>
             </>
@@ -516,41 +502,65 @@ export default function ProfileSetup({ onComplete }: { onComplete?: () => void }
 
           {currentStep === "complete" && (
             <>
-              <h2 style={styles.stepTitle}>🎉 Setup Complete!</h2>
-              <p style={{ color: "#6b7280", marginBottom: "24px", fontSize: "14px" }}>
+              <h2 style={{
+                fontSize: "1.18rem", fontWeight: 800, color: "#38d273", marginBottom: 15, letterSpacing: 1.1
+              }}>🎉 Setup Complete!</h2>
+              <p style={{
+                color: accentText, fontWeight: 500, opacity: 0.95, marginBottom: 18, fontSize: "1.04rem"
+              }}>
                 Welcome to Dash Race, <strong>{username}</strong>! Your profile is ready.
               </p>
-              <div
-                style={{
-                  background: "#dcfce7",
-                  color: "#166534",
-                  padding: "16px",
-                  borderRadius: "12px",
-                  fontSize: "14px",
-                  fontWeight: "500",
-                }}
-              >
+              <div style={{
+                background: "#dcfce7",
+                color: "#166534",
+                padding: "1.02rem",
+                borderRadius: "12px",
+                fontSize: "1.07rem",
+                fontWeight: 700,
+                fontFamily: "Orbitron, monospace",
+                letterSpacing: 1.05,
+              }}>
                 ✅ Game launching...
               </div>
             </>
           )}
         </div>
 
+        {/* Status messages */}
         {status && (
-          <div
-            style={{
-              ...styles.status,
-              ...(status.startsWith("✅")
-                ? styles.statusSuccess
-                : status.startsWith("❌")
-                  ? styles.statusError
-                  : styles.statusInfo),
-            }}
-          >
+          <div style={{
+            marginTop: 22,
+            padding: "13px 17px",
+            borderRadius: 10,
+            fontSize: "1.01rem",
+            fontWeight: 600,
+            textAlign: "center",
+            background: status.startsWith("✅")
+              ? "#273e29"
+              : status.startsWith("❌")
+                ? "#4a2323"
+                : "#23183b",
+            color: status.startsWith("✅")
+              ? "#38d273"
+              : status.startsWith("❌")
+                ? "#ff7676"
+                : accent,
+            border: status.startsWith("✅")
+              ? "1.6px solid #38d273"
+              : status.startsWith("❌")
+                ? "1.6px solid #ff7676"
+                : `1.6px solid ${accent2}`,
+            boxShadow: status.startsWith("✅")
+              ? "0 2px 10px #38d27333"
+              : status.startsWith("❌")
+                ? "0 2px 10px #ff767633"
+                : "0 2px 10px #b07cff33",
+            marginBottom: 8,
+          }}>
             {status}
           </div>
         )}
       </div>
     </div>
-  )
+  );
 }

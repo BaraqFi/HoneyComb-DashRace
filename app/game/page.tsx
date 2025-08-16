@@ -218,7 +218,6 @@ export default function GamePage() {
             setShowStatsModal(false);
             setMode(null);
           }}
-          isPaused={showStatsModal}
         />
       )}
     </section>

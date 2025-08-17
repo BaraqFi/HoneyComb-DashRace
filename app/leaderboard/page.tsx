@@ -81,9 +81,9 @@ export default function LeaderboardPage() {
       }}
     >
       {/* Back button */}
-      <Link href="/" className="no-underline absolute left-4 sm:left-6 top-4 sm:top-6 z-10">
+      <Link href="/" className="no-underline absolute left-2 sm:left-4 md:left-6 top-2 sm:top-4 md:top-6 z-10">
         <button
-          className="bg-transparent border-2 border-[#2bdafe] rounded-lg text-[#2bdafe] font-bold text-sm sm:text-base md:text-lg px-3 sm:px-4 md:px-6 py-2 sm:py-3 cursor-pointer transition-all duration-200 outline-none"
+          className="bg-transparent border-2 border-[#2bdafe] rounded-lg text-[#2bdafe] font-bold text-xs sm:text-sm md:text-lg px-2 sm:px-3 md:px-6 py-1 sm:py-2 md:py-3 cursor-pointer transition-all duration-200 outline-none"
           style={{
             fontFamily: "Orbitron",
           }}
@@ -100,9 +100,9 @@ export default function LeaderboardPage() {
         </button>
       </Link>
       {/* Header */}
-      <div className="mt-8 sm:mt-10 md:mt-12 mb-2 sm:mb-3 text-center">
+      <div className="mt-6 sm:mt-8 md:mt-10 lg:mt-12 mb-1 sm:mb-2 md:mb-3 text-center">
         <h2
-          className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black text-[#ffd700] m-0 tracking-[5px]"
+          className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-black text-[#ffd700] m-0 tracking-[3px] sm:tracking-[5px]"
           style={{
             fontFamily: "Orbitron",
             textShadow: "0 0 18px #ffd70088, 0 1px 12px #ffd70050",
@@ -111,7 +111,7 @@ export default function LeaderboardPage() {
           LEADERBOARD
         </h2>
         <div
-          className="font-normal text-xs sm:text-sm md:text-base lg:text-lg text-[#e3dcb3] opacity-97 mt-2 sm:mt-3 mb-1"
+          className="font-normal text-xs sm:text-sm md:text-base lg:text-lg text-[#e3dcb3] opacity-97 mt-1 sm:mt-2 md:mt-3 mb-1"
           style={{
             fontFamily: "Orbitron",
             textShadow: "0 0 7px #ffd70044",
@@ -122,7 +122,7 @@ export default function LeaderboardPage() {
       </div>
       {/* Controls */}
       <div
-        className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 md:gap-5 mb-4 sm:mb-6 font-medium text-xs sm:text-sm md:text-base"
+        className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2 md:gap-3 lg:gap-5 mb-2 sm:mb-3 md:mb-4 lg:mb-6 font-medium text-xs sm:text-sm md:text-base"
         style={{
           fontFamily: "Orbitron",
         }}
@@ -130,7 +130,7 @@ export default function LeaderboardPage() {
         <button
           onClick={fetchLeaderboard}
           disabled={loading}
-          className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-md text-sm sm:text-base font-bold cursor-pointer transition-all duration-200 outline-none"
+          className="px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 rounded-md text-xs sm:text-sm md:text-base font-bold cursor-pointer transition-all duration-200 outline-none"
           style={{
             background: loading ? "#333333" : "linear-gradient(90deg, #ffd700 0%, #f7e13e 100%)",
             color: loading ? "#b2b2b2" : "#191c1f",
@@ -143,7 +143,7 @@ export default function LeaderboardPage() {
         <span className="text-[#ffd700] font-medium">Sort by:</span>
         <button
           onClick={() => setSortBy("score")}
-          className="px-2 sm:px-3 py-1 rounded-md text-sm sm:text-base font-bold cursor-pointer transition-all duration-200 outline-none"
+          className="px-1 sm:px-2 md:px-3 py-1 rounded-md text-xs sm:text-sm md:text-base font-bold cursor-pointer transition-all duration-200 outline-none"
           style={{
             background: sortBy === "score" ? "#ffd700" : "#191c1f",
             color: sortBy === "score" ? "#191c1f" : "#ffd700",
@@ -155,7 +155,7 @@ export default function LeaderboardPage() {
         </button>
         <button
           onClick={() => setSortBy("miles")}
-          className="px-2 sm:px-3 py-1 rounded-md text-sm sm:text-base font-bold cursor-pointer transition-all duration-200 outline-none"
+          className="px-1 sm:px-2 md:px-3 py-1 rounded-md text-xs sm:text-sm md:text-base font-bold cursor-pointer transition-all duration-200 outline-none"
           style={{
             background: sortBy === "miles" ? "#ffd700" : "#191c1f",
             color: sortBy === "miles" ? "#191c1f" : "#ffd700",
@@ -166,72 +166,106 @@ export default function LeaderboardPage() {
           Miles
         </button>
       </div>
+
       {/* Leaderboard Box */}
       <div
-        className="bg-opacity-93 bg-[#0a0c13] border border-[#ffd700] rounded-2xl min-w-[280px] max-w-full sm:min-w-[300px] sm:max-w-[450px] w-full sm:w-4/5 min-h-[170px] mx-auto flex flex-col justify-center items-center box-shadow-[0_2px_24px_#ffe55621] mb-8"
+        className="bg-opacity-93 bg-[#0a0c13] border border-[#ffd700] rounded-2xl min-w-[280px] max-w-full sm:min-w-[300px] sm:max-w-[450px] w-full sm:w-4/5 min-h-[120px] sm:min-h-[140px] md:min-h-[160px] mx-auto flex flex-col justify-center items-center box-shadow-[0_2px_24px_#ffe55621] mb-2 sm:mb-4 md:mb-6"
       >
         {/* Table header */}
         <div
-          className="text-[#ffd700] font-bold text-lg sm:text-xl grid grid-cols-4 gap-2 sm:gap-3 px-3 sm:px-4 py-1 sm:py-1.5 border-b border-[#ffd700] mb-2 text-center letter-spacing-1.4"
+          className="text-[#ffd700] font-bold text-sm sm:text-base md:text-lg grid grid-cols-4 gap-1 sm:gap-2 md:gap-3 px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 border-b border-[#ffd700] mb-1 sm:mb-2 text-center letter-spacing-1.4"
         >
           <div>RANK</div>
-          <div>USER</div>
+          <div>PLAYER</div>
           <div>SCORE</div>
           <div>MILES</div>
         </div>
-        {/* Table rows */}
+
         {profiles.length === 0 ? (
           <div
-            className="font-orbitron text-[#e7e5ce] text-base sm:text-lg text-center py-6"
+            className="font-orbitron text-[#e7e5ce] text-sm sm:text-base md:text-lg text-center py-4 sm:py-6"
           >
             No scores yet. Be the first to play!
           </div>
         ) : (
-          profiles.map((p, i) => {
-            const isUser = publicKey && p.wallet && p.wallet === publicKey.toString();
-            const isEmpty = p.isEmpty || (!p.username && !p.wallet);
-
-            return (
-              <div
-                key={i}
-                className="grid grid-cols-4 gap-2 sm:gap-3 px-3 sm:px-4 py-1 sm:py-1.5 border-b border-[#222] last:border-none"
-              >
+          <div className="w-full">
+            {profiles.map((p, i) => {
+              const isEmpty = p.isEmpty;
+              const isUser = publicKey && p.wallet === publicKey.toString();
+              return (
                 <div
-                  className="text-center font-bold text-lg sm:text-xl"
+                  key={i}
+                  className="grid grid-cols-4 gap-1 sm:gap-2 md:gap-3 px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 border-b border-[#222] last:border-none"
+                  style={{
+                    fontSize: "0.9rem",
+                    alignItems: "center",
+                    width: "100%",
+                    background: isUser
+                      ? "#212e19"
+                      : i % 2 === 0
+                      ? "#181c23"
+                      : "#131622",
+                    transition: "background-color 0.22s",
+                  }}
                 >
-                  {isEmpty
-                    ? "—"
-                    : i === 0
-                    ? "🥇"
-                    : i === 1
-                    ? "🥈"
-                    : i === 2
-                    ? "🥉"
-                    : `#${i + 1}`}
+                  <div
+                    className="text-center font-bold text-sm sm:text-base md:text-lg"
+                    style={{
+                      color: isEmpty
+                        ? "#494849"
+                        : i === 0
+                        ? "#ffd700"
+                        : i === 1
+                        ? "#c0c0c0"
+                        : i === 2
+                        ? "#cd7f32"
+                        : "#fff",
+                    }}
+                  >
+                    {isEmpty
+                      ? "—"
+                      : i === 0
+                      ? "🥇"
+                      : i === 1
+                      ? "🥈"
+                      : i === 2
+                      ? "🥉"
+                      : `${i + 1}`}
+                  </div>
+                  <div
+                    className="text-left font-orbitron font-semibold text-xs sm:text-sm md:text-base"
+                    style={{
+                      color: isEmpty ? "#494849" : "#fff",
+                    }}
+                  >
+                    {isEmpty ? "—" : p.username || "(no name)"}
+                  </div>
+                  <div
+                    className="text-right font-bold text-xs sm:text-sm md:text-base"
+                    style={{
+                      color: isEmpty ? "#494849" : "#ffd700",
+                    }}
+                  >
+                    {isEmpty ? "—" : p.score.toLocaleString()}
+                  </div>
+                  <div
+                    className="text-right font-bold text-xs sm:text-sm md:text-base"
+                    style={{
+                      color: isEmpty ? "#494849" : "#2bdafe",
+                    }}
+                  >
+                    {isEmpty ? "—" : p.miles.toLocaleString()}
+                  </div>
                 </div>
-                <div
-                  className="text-left font-orbitron font-semibold text-base sm:text-lg"
-                >
-                  {isEmpty ? "—" : p.username || "(no name)"}
-                </div>
-                <div
-                  className="text-right font-bold text-base sm:text-lg"
-                >
-                  {isEmpty ? "—" : p.score.toLocaleString()}
-                </div>
-                <div
-                  className="text-right font-bold text-base sm:text-lg"
-                >
-                  {isEmpty ? "—" : p.miles.toLocaleString()}
-                </div>
-              </div>
-            );
-          })
+              );
+            })}
+          </div>
         )}
       </div>
+
       {/* Status and last refreshed */}
       <div
-        className="mt-1.5 sm:mt-2 text-center font-medium text-sm sm:text-base"
+        className="mt-1 sm:mt-1.5 md:mt-2 text-center font-medium text-xs sm:text-sm md:text-base"
         style={{
           color: status.startsWith("✅")
             ? "#4ade80"
@@ -239,11 +273,11 @@ export default function LeaderboardPage() {
             ? "#f87171"
             : "#e3e3e3",
           fontFamily: "Orbitron",
-          marginBottom: "1.7rem",
+          marginBottom: "1rem",
         }}
       >
         {status}
-        <div className="text-[#b1b2b7] font-normal text-xs sm:text-sm mt-1.5">
+        <div className="text-[#b1b2b7] font-normal text-xs sm:text-sm mt-1">
           Last refreshed: {lastFetched ? lastFetched.toLocaleTimeString() : "Never"}
         </div>
       </div>

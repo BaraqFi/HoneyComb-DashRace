@@ -23,6 +23,7 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
 }
 
 /* Responsive utilities */
@@ -36,6 +37,20 @@ body {
     min-height: 44px;
     min-width: 44px;
   }
+  
+  /* Prevent any scrolling on mobile */
+  html, body {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* Ensure viewport height works correctly on mobile */
+  .min-h-screen {
+    min-height: 100vh;
+    min-height: 100dvh; /* Dynamic viewport height for mobile */
+  }
 }
 
 /* Improve text readability on small screens */
@@ -43,9 +58,34 @@ body {
   body {
     font-size: 16px; /* Prevents zoom on iOS */
   }
+  
+  /* Extra compact spacing for very small screens */
+  .text-xs {
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+  
+  /* Reduce padding and margins on mobile */
+  .p-3 {
+    padding: 0.5rem;
+  }
+  
+  .mb-3 {
+    margin-bottom: 0.5rem;
+  }
+  
+  .mt-3 {
+    margin-top: 0.5rem;
+  }
 }
 
 /* Smooth transitions for responsive changes */
 * {
   transition: width 0.2s ease, height 0.2s ease, font-size 0.2s ease;
+}
+
+/* Prevent any horizontal scrolling */
+* {
+  max-width: 100%;
+  box-sizing: border-box;
 }

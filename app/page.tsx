@@ -16,9 +16,9 @@ export default function HomePage() {
       }}
     >
       {/* Title */}
-      <div className="text-center mb-4 sm:mb-6 md:mb-8">
+      <div className="text-center mb-3 sm:mb-4 md:mb-6 lg:mb-8">
         <h1
-          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black text-[#2bdafe] tracking-[5px] m-0"
+          className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black text-[#2bdafe] tracking-[3px] sm:tracking-[5px] m-0"
           style={{
             textShadow: '0 0 12px #35caff, 0 1px 32px #1a8be6, 0 2px 6px #19a6d5',
           }}
@@ -26,7 +26,7 @@ export default function HomePage() {
           DASH RACE
         </h1>
         <div
-          className="text-xs sm:text-sm md:text-base lg:text-lg font-normal tracking-[1.5px] text-[#d8eafd] opacity-93 mt-2 sm:mt-3 mb-1"
+          className="text-xs sm:text-sm md:text-base lg:text-lg font-normal tracking-[1.5px] text-[#d8eafd] opacity-93 mt-1 sm:mt-2 md:mt-3 mb-1"
           style={{
             textShadow: '0 0 8px #21a5f5bb',
           }}
@@ -36,8 +36,8 @@ export default function HomePage() {
       </div>
       
       {/* 2x2 Button Grid */}
-      <div className="flex flex-col items-center w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl gap-3 sm:gap-4 px-4 sm:px-6">
-        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full">
+      <div className="flex flex-col items-center w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl gap-2 sm:gap-3 md:gap-4 px-3 sm:px-4 md:px-6">
+        <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 md:gap-4 w-full">
           <Link href="/game" className="flex-1">
             <button
               className="w-full font-bold text-xs sm:text-sm md:text-base lg:text-lg uppercase py-2 sm:py-3 md:py-4 tracking-[2.1px] cursor-pointer transition-all duration-200 outline-none rounded-xl"
@@ -66,7 +66,7 @@ export default function HomePage() {
             </button>
           </Link>
         </div>
-        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full">
+        <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 md:gap-4 w-full">
           <Link href="/leaderboard" className="flex-1">
             <button
               className="w-full font-bold text-xs sm:text-sm md:text-base lg:text-lg uppercase py-2 sm:py-3 md:py-4 tracking-[1.9px] cursor-pointer transition-all duration-200 outline-none rounded-xl"
@@ -94,14 +94,14 @@ export default function HomePage() {
             </button>
           </Link>
         </div>
-        <div className="w-full flex justify-center mt-3 sm:mt-4">
+        <div className="w-full flex justify-center mt-2 sm:mt-3 md:mt-4">
           <WalletConnect />
         </div>
       </div>
       
       {/* Instructions */}
       <div
-        className="absolute bottom-2 sm:bottom-3 left-1/2 transform -translate-x-1/2 text-center text-white opacity-78 font-normal text-xs sm:text-sm md:text-base leading-tight tracking-[1.1px] px-4"
+        className="absolute bottom-1 sm:bottom-2 md:bottom-3 left-1/2 transform -translate-x-1/2 text-center text-white opacity-78 font-normal text-xs sm:text-sm md:text-base leading-tight tracking-[1.1px] px-3 sm:px-4"
         style={{
           fontFamily: 'VT323, monospace',
         }}

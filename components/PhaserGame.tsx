@@ -276,16 +276,16 @@ useEffect(() => {
 
 
   return (
-    <div className="flex flex-col items-center gap-4">
+    <div className="flex flex-col items-center gap-4 p-4">
       <div className="flex gap-3 mb-2">
         <button
-          className="px-5 py-2 rounded-lg bg-blue-800 text-white font-mono"
+          className="px-3 sm:px-4 md:px-5 py-2 rounded-lg bg-blue-800 text-white font-mono text-sm sm:text-base"
           onClick={handlePause}
         >
           {internalPaused ? "Resume" : "Pause"}
         </button>
         <button
-          className="px-5 py-2 rounded-lg bg-red-700 text-white font-mono"
+          className="px-3 sm:px-4 md:px-5 py-2 rounded-lg bg-red-700 text-white font-mono text-sm sm:text-base"
           onClick={handleSaveAndExit}
         >
           Save & Exit
@@ -293,7 +293,7 @@ useEffect(() => {
       </div>
       <div
         ref={gameRef}
-        className="w-full max-w-md aspect-[3/5] flex justify-center items-center mx-auto"
+        className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl aspect-[3/5] flex justify-center items-center mx-auto"
         style={{ minHeight: 400 }}
       />
     </div>

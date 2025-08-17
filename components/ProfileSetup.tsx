@@ -224,84 +224,45 @@ export default function ProfileSetup({ onComplete }: { onComplete?: () => void }
   };
 
   return (
-    <div style={{
-      fontFamily: "Orbitron, monospace",
-      minHeight: "100vh",
-      background: "linear-gradient(135deg, #21152e 0%, #381c4a 65%, #2e1848 100%)",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      padding: 24,
-    }}>
+    <div className="font-orbitron min-h-screen bg-gradient-to-br from-[#21152e] via-[#381c4a] to-[#2e1848] flex items-center justify-center p-4 sm:p-6">
       <style jsx>{`
         @keyframes spin { 0% { transform: rotate(0deg);} 100% { transform: rotate(360deg);} }
       `}</style>
-      <div style={{
-        background: cardBg,
-        border: `2.5px solid ${accent}`,
-        borderRadius: 22,
-        boxShadow: `0 8px 40px ${accent}44, 0 2px 16px #0006`,
-        padding: "2.7rem 2rem 2.1rem 2rem",
-        maxWidth: 420,
-        width: "100%",
-        color: "#fff",
-        position: "relative",
-      }}>
-        <div style={{ textAlign: "center", marginBottom: 32 }}>
-          <h1 style={{
-            fontSize: "2rem",
-            fontWeight: 900,
-            marginBottom: 8,
-            background: `linear-gradient(90deg, ${accent} 10%, ${accent2} 80%)`,
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            letterSpacing: 2,
-            textShadow: `0 1.5px 10px ${accent}44`
-          }}>
+      <div className="bg-[rgba(40,18,54,0.97)] border-2 border-[#a763e6] rounded-3xl shadow-lg p-6 sm:p-8 md:p-10 max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg w-full text-white relative"
+        style={{
+          boxShadow: `0 8px 40px ${accent}44, 0 2px 16px #0006`,
+        }}>
+        <div className="text-center mb-6 sm:mb-8">
+          <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black mb-2 sm:mb-3 tracking-[2px]"
+            style={{
+              background: `linear-gradient(90deg, ${accent} 10%, ${accent2} 80%)`,
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              textShadow: `0 1.5px 10px ${accent}44`
+            }}>
             Welcome to Dash Race
           </h1>
-          <p style={{
-            fontSize: 15,
-            color: accentText,
-            fontWeight: 500,
-            opacity: 0.92,
-            letterSpacing: 1,
-            marginTop: 4,
-          }}>Set up your gaming profile to get started</p>
+          <p className="text-sm sm:text-base md:text-lg text-[#c6baff] font-medium opacity-92 tracking-[1px] mt-1 sm:mt-2">
+            Set up your gaming profile to get started
+          </p>
         </div>
 
         {/* Progress Bar */}
-        <div style={{
-          width: "100%",
-          height: 5,
-          background: "#2d183c",
-          borderRadius: 2,
-          marginBottom: 22,
-          overflow: "hidden",
-        }}>
-          <div style={{
-            height: "100%",
-            background: `linear-gradient(90deg, ${accent2}, ${accent})`,
-            borderRadius: 2,
-            width: `${getProgress()}%`,
-            transition: "width 0.3s",
-          }} />
+        <div className="w-full h-1 sm:h-1.5 bg-[#2d183c] rounded mb-4 sm:mb-6 overflow-hidden">
+          <div className="h-full bg-gradient-to-r from-[#d7a3ff] to-[#a763e6] rounded transition-all duration-300"
+            style={{
+              width: `${getProgress()}%`,
+            }} />
         </div>
 
         {/* Step dots */}
-        <div style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          gap: 14,
-          marginBottom: 24,
-        }}>
+        <div className="flex justify-center items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
           {["username", "createUser", "authenticate", "createProfile"].map((step, idx) => {
             const status = getStepStatus(step);
             return (
               <div key={step}
+                className="w-3 h-3 sm:w-4 sm:h-4 rounded-full transition-all duration-200"
                 style={{
-                  width: 15, height: 15, borderRadius: "50%",
                   background: status === "complete"
                     ? "#10b981"
                     : status === "active"
@@ -310,75 +271,42 @@ export default function ProfileSetup({ onComplete }: { onComplete?: () => void }
                   border: status === "active" ? `2.2px solid ${accent2}` : "none",
                   boxShadow: status === "active" ? `0 2px 10px ${accent2}55` : undefined,
                   transform: status === "active" ? "scale(1.18)" : undefined,
-                  transition: "all 0.2s",
                 }}
               />
             )
           })}
         </div>
 
-        <div style={{
-          minHeight: 128,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          textAlign: "center"
-        }}>
+        <div className="min-h-32 sm:min-h-36 flex flex-col items-center text-center">
           {currentStep === "checking" && (
-            <div style={{ color: accent2, fontWeight: 700, fontSize: "1.07rem", padding: "2.5rem 0" }}>
+            <div className="text-[#d7a3ff] font-bold text-sm sm:text-base md:text-lg py-8 sm:py-10">
               Checking for existing profile...
             </div>
           )}
 
           {currentStep === "username" && (
             <>
-              <h2 style={{
-                fontSize: "1.3rem",
-                fontWeight: 800,
-                color: accent,
-                marginBottom: 17,
-                letterSpacing: 1.1,
-              }}>Choose Your Username</h2>
+              <h2 className="text-lg sm:text-xl md:text-2xl font-extrabold text-[#a763e6] mb-4 sm:mb-5 tracking-[1.1px]">
+                Choose Your Username
+              </h2>
               <input
                 type="text"
                 value={username}
                 onChange={e => setUsername(e.target.value)}
                 placeholder="Enter your gaming username"
                 maxLength={30}
-                style={{
-                  width: "100%",
-                  padding: "0.9rem 1.1rem",
-                  fontSize: "1.04rem",
-                  border: `2.2px solid ${accent}`,
-                  borderRadius: 13,
-                  outline: "none",
-                  fontFamily: "Orbitron, monospace",
-                  background: "#201832",
-                  color: "#fff",
-                  marginBottom: 22,
-                  letterSpacing: 0.6,
-                }}
+                className="w-full px-3 sm:px-4 py-3 sm:py-4 text-sm sm:text-base md:text-lg border-2 border-[#a763e6] rounded-xl outline-none font-orbitron bg-[#201832] text-white mb-4 sm:mb-6 tracking-[0.6px]"
                 onKeyPress={e => e.key === "Enter" && handleUsernameSubmit()}
                 autoFocus
               />
               <button
                 onClick={handleUsernameSubmit}
                 disabled={!username.trim()}
+                className="w-full bg-gradient-to-r from-[#d7a3ff] to-[#a763e6] text-[#1b0f28] border-none py-3 sm:py-4 text-sm sm:text-base md:text-lg font-bold rounded-xl cursor-pointer font-orbitron tracking-[1.1px] mb-2"
                 style={{
-                  width: "100%",
-                  background: `linear-gradient(90deg, ${accent2} 0%, ${accent} 100%)`,
-                  color: "#1b0f28",
-                  border: "none",
-                  padding: "1.1rem 0",
-                  fontSize: "1.11rem",
-                  fontWeight: 700,
-                  borderRadius: 13,
                   cursor: username.trim() ? "pointer" : "not-allowed",
                   boxShadow: username.trim() ? `0 4px 16px ${accent2}23` : "none",
-                  fontFamily: "Orbitron, monospace",
                   opacity: username.trim() ? 1 : 0.7,
-                  letterSpacing: 1.1,
-                  marginBottom: 6,
                 }}
               >
                 Continue
@@ -388,175 +316,94 @@ export default function ProfileSetup({ onComplete }: { onComplete?: () => void }
 
           {currentStep === "createUser" && (
             <>
-              <h2 style={{
-                fontSize: "1.23rem", fontWeight: 800, color: accent, marginBottom: 13, letterSpacing: 1.1
-              }}>Create Your Account</h2>
-              <p style={{
-                color: accentText, fontWeight: 500, opacity: 0.88, marginBottom: 21, fontSize: "0.98rem"
-              }}>
+              <h2 className="text-lg sm:text-xl md:text-2xl font-extrabold text-[#a763e6] mb-3 sm:mb-4 tracking-[1.1px]">
+                Create Your Account
+              </h2>
+              <p className="text-[#c6baff] font-medium opacity-88 mb-4 sm:mb-6 text-sm sm:text-base md:text-lg">
                 Hello <strong>{username}</strong>! Let's create your blockchain account.
               </p>
               <button
                 onClick={createUser}
-                disabled={loading || !wallet.publicKey}
+                disabled={loading}
+                className="w-full bg-gradient-to-r from-[#d7a3ff] to-[#a763e6] text-[#1b0f28] border-none py-3 sm:py-4 text-sm sm:text-base md:text-lg font-bold rounded-xl cursor-pointer font-orbitron tracking-[1.1px] mb-2"
                 style={{
-                  width: "100%",
-                  background: `linear-gradient(90deg, ${accent2} 0%, ${accent} 100%)`,
-                  color: "#1b0f28",
-                  border: "none",
-                  padding: "1.1rem 0",
-                  fontSize: "1.07rem",
-                  fontWeight: 700,
-                  borderRadius: 13,
-                  cursor: loading || !wallet.publicKey ? "not-allowed" : "pointer",
-                  fontFamily: "Orbitron, monospace",
-                  opacity: loading || !wallet.publicKey ? 0.6 : 1,
-                  letterSpacing: 1.1,
-                  boxShadow: loading || !wallet.publicKey ? "none" : `0 4px 16px ${accent2}1a`,
+                  cursor: loading ? "not-allowed" : "pointer",
+                  boxShadow: loading ? "none" : `0 4px 16px ${accent2}23`,
+                  opacity: loading ? 0.7 : 1,
                 }}
               >
-                {loading &&
-                  <span style={{
-                    width: 18, height: 18, border: "2px solid #eee2", borderTop: `2px solid ${accent2}`, borderRadius: "50%", display: "inline-block", marginRight: 7, animation: "spin 1s linear infinite"
-                  }} />}
-                Create User
+                {loading ? "Creating..." : "Create Account"}
               </button>
             </>
           )}
 
           {currentStep === "authenticate" && (
             <>
-              <h2 style={{
-                fontSize: "1.23rem", fontWeight: 800, color: accent, marginBottom: 13, letterSpacing: 1.1
-              }}>Authenticate Your Account</h2>
-              <p style={{
-                color: accentText, fontWeight: 500, opacity: 0.88, marginBottom: 21, fontSize: "0.98rem"
-              }}>
-                Sign a message to verify your identity and secure your account.
+              <h2 className="text-lg sm:text-xl md:text-2xl font-extrabold text-[#a763e6] mb-3 sm:mb-4 tracking-[1.1px]">
+                Authenticate Wallet
+              </h2>
+              <p className="text-[#c6baff] font-medium opacity-88 mb-4 sm:mb-6 text-sm sm:text-base md:text-lg">
+                Sign a message to verify your wallet ownership.
               </p>
               <button
                 onClick={authenticateUser}
-                disabled={loading || !wallet.publicKey}
+                disabled={loading}
+                className="w-full bg-gradient-to-r from-[#d7a3ff] to-[#a763e6] text-[#1b0f28] border-none py-3 sm:py-4 text-sm sm:text-base md:text-lg font-bold rounded-xl cursor-pointer font-orbitron tracking-[1.1px] mb-2"
                 style={{
-                  width: "100%",
-                  background: `linear-gradient(90deg, ${accent2} 0%, ${accent} 100%)`,
-                  color: "#1b0f28",
-                  border: "none",
-                  padding: "1.1rem 0",
-                  fontSize: "1.07rem",
-                  fontWeight: 700,
-                  borderRadius: 13,
-                  cursor: loading || !wallet.publicKey ? "not-allowed" : "pointer",
-                  fontFamily: "Orbitron, monospace",
-                  opacity: loading || !wallet.publicKey ? 0.6 : 1,
-                  letterSpacing: 1.1,
-                  boxShadow: loading || !wallet.publicKey ? "none" : `0 4px 16px ${accent2}1a`,
+                  cursor: loading ? "not-allowed" : "pointer",
+                  boxShadow: loading ? "none" : `0 4px 16px ${accent2}23`,
+                  opacity: loading ? 0.7 : 1,
                 }}
               >
-                {loading &&
-                  <span style={{
-                    width: 18, height: 18, border: "2px solid #eee2", borderTop: `2px solid ${accent2}`, borderRadius: "50%", display: "inline-block", marginRight: 7, animation: "spin 1s linear infinite"
-                  }} />}
-                Authenticate User
+                {loading ? "Authenticating..." : "Sign Message"}
               </button>
             </>
           )}
 
           {currentStep === "createProfile" && (
             <>
-              <h2 style={{
-                fontSize: "1.23rem", fontWeight: 800, color: accent, marginBottom: 13, letterSpacing: 1.1
-              }}>Create Game Profile</h2>
-              <p style={{
-                color: accentText, fontWeight: 500, opacity: 0.88, marginBottom: 21, fontSize: "0.98rem"
-              }}>
-                Final step! Create your gaming profile to start racing.
+              <h2 className="text-lg sm:text-xl md:text-2xl font-extrabold text-[#a763e6] mb-3 sm:mb-4 tracking-[1.1px]">
+                Create Game Profile
+              </h2>
+              <p className="text-[#c6baff] font-medium opacity-88 mb-4 sm:mb-6 text-sm sm:text-base md:text-lg">
+                Final step! Create your gaming profile on the blockchain.
               </p>
               <button
                 onClick={createProfile}
-                disabled={loading || !accessToken || !username}
+                disabled={loading}
+                className="w-full bg-gradient-to-r from-[#d7a3ff] to-[#a763e6] text-[#1b0f28] border-none py-3 sm:py-4 text-sm sm:text-base md:text-lg font-bold rounded-xl cursor-pointer font-orbitron tracking-[1.1px] mb-2"
                 style={{
-                  width: "100%",
-                  background: `linear-gradient(90deg, ${accent2} 0%, ${accent} 100%)`,
-                  color: "#1b0f28",
-                  border: "none",
-                  padding: "1.1rem 0",
-                  fontSize: "1.07rem",
-                  fontWeight: 700,
-                  borderRadius: 13,
-                  cursor: loading || !accessToken || !username ? "not-allowed" : "pointer",
-                  fontFamily: "Orbitron, monospace",
-                  opacity: loading || !accessToken || !username ? 0.6 : 1,
-                  letterSpacing: 1.1,
-                  boxShadow: loading || !accessToken || !username ? "none" : `0 4px 16px ${accent2}1a`,
+                  cursor: loading ? "not-allowed" : "pointer",
+                  boxShadow: loading ? "none" : `0 4px 16px ${accent2}23`,
+                  opacity: loading ? 0.7 : 1,
                 }}
               >
-                {loading &&
-                  <span style={{
-                    width: 18, height: 18, border: "2px solid #eee2", borderTop: `2px solid ${accent2}`, borderRadius: "50%", display: "inline-block", marginRight: 7, animation: "spin 1s linear infinite"
-                  }} />}
-                Create Game Profile
+                {loading ? "Creating..." : "Create Profile"}
               </button>
             </>
           )}
 
           {currentStep === "complete" && (
             <>
-              <h2 style={{
-                fontSize: "1.18rem", fontWeight: 800, color: "#38d273", marginBottom: 15, letterSpacing: 1.1
-              }}>🎉 Setup Complete!</h2>
-              <p style={{
-                color: accentText, fontWeight: 500, opacity: 0.95, marginBottom: 18, fontSize: "1.04rem"
-              }}>
-                Welcome to Dash Race, <strong>{username}</strong>! Your profile is ready.
+              <h2 className="text-lg sm:text-xl md:text-2xl font-extrabold text-[#10b981] mb-3 sm:mb-4 tracking-[1.1px]">
+                🎉 Profile Ready!
+              </h2>
+              <p className="text-[#c6baff] font-medium opacity-88 mb-4 sm:mb-6 text-sm sm:text-base md:text-lg">
+                Welcome to Dash Race, <strong>{username}</strong>! You're all set to play.
               </p>
-              <div style={{
-                background: "#dcfce7",
-                color: "#166534",
-                padding: "1.02rem",
-                borderRadius: "12px",
-                fontSize: "1.07rem",
-                fontWeight: 700,
-                fontFamily: "Orbitron, monospace",
-                letterSpacing: 1.05,
-              }}>
-                ✅ Game launching...
+              <div className="text-[#10b981] font-bold text-sm sm:text-base md:text-lg">
+                ✅ Setup Complete
               </div>
             </>
           )}
         </div>
 
-        {/* Status messages */}
+        {/* Status */}
         {status && (
-          <div style={{
-            marginTop: 22,
-            padding: "13px 17px",
-            borderRadius: 10,
-            fontSize: "1.01rem",
-            fontWeight: 600,
-            textAlign: "center",
-            background: status.startsWith("✅")
-              ? "#273e29"
-              : status.startsWith("❌")
-                ? "#4a2323"
-                : "#23183b",
-            color: status.startsWith("✅")
-              ? "#38d273"
-              : status.startsWith("❌")
-                ? "#ff7676"
-                : accent,
-            border: status.startsWith("✅")
-              ? "1.6px solid #38d273"
-              : status.startsWith("❌")
-                ? "1.6px solid #ff7676"
-                : `1.6px solid ${accent2}`,
-            boxShadow: status.startsWith("✅")
-              ? "0 2px 10px #38d27333"
-              : status.startsWith("❌")
-                ? "0 2px 10px #ff767633"
-                : "0 2px 10px #b07cff33",
-            marginBottom: 8,
-          }}>
+          <div className="mt-4 sm:mt-6 text-center text-sm sm:text-base md:text-lg font-medium"
+            style={{
+              color: status.startsWith("✅") ? "#10b981" : status.startsWith("❌") ? "#ef4444" : accent2,
+            }}>
             {status}
           </div>
         )}

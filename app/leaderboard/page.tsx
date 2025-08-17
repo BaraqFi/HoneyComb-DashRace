@@ -73,34 +73,19 @@ export default function LeaderboardPage() {
 
   return (
     <div
+      className="min-h-screen w-full flex flex-col items-center relative justify-start"
       style={{
-        minHeight: "100vh",
-        width: "100vw",
         background: "linear-gradient(135deg, #151A2B 0%, #1a1a2e 48%, #16213e 100%)",
         color: "#ffffff",
         fontFamily: "Orbitron, monospace",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        position: "relative",
-        justifyContent: "flex-start",
       }}
     >
       {/* Back button */}
-      <Link href="/" style={{ textDecoration: "none", position: "absolute", left: 38, top: 34 }}>
+      <Link href="/" className="no-underline absolute left-8 sm:left-10 top-8 sm:top-10 z-10">
         <button
+          className="bg-transparent border-2 border-[#2bdafe] rounded-lg text-[#2bdafe] font-bold text-sm sm:text-base md:text-lg px-4 sm:px-6 py-2 sm:py-3 cursor-pointer transition-all duration-200 outline-none"
           style={{
-            background: "rgba(0,0,0,0)",
-            border: "2.1px solid #2bdafe",
-            borderRadius: 11,
-            color: "#2bdafe",
             fontFamily: "Orbitron",
-            fontWeight: 700,
-            fontSize: "1.1rem",
-            padding: "0.91rem 2.2rem",
-            cursor: "pointer",
-            transition: "all 0.22s",
-            outline: "none",
           }}
           onMouseEnter={e => {
             (e.currentTarget as HTMLButtonElement).style.background = "#2bdafe";
@@ -115,29 +100,20 @@ export default function LeaderboardPage() {
         </button>
       </Link>
       {/* Header */}
-      <div style={{ marginTop: 54, marginBottom: 9, textAlign: "center" }}>
+      <div className="mt-12 sm:mt-14 md:mt-16 mb-2 sm:mb-3 text-center">
         <h2
+          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black text-[#ffd700] m-0 tracking-[5px]"
           style={{
-            fontSize: "3.2rem",
             fontFamily: "Orbitron",
-            fontWeight: 900,
-            color: "#ffd700",
-            margin: 0,
-            letterSpacing: 5,
             textShadow: "0 0 18px #ffd70088, 0 1px 12px #ffd70050",
           }}
         >
           LEADERBOARD
         </h2>
         <div
+          className="font-normal text-sm sm:text-base md:text-lg lg:text-xl text-[#e3dcb3] opacity-97 mt-2 sm:mt-3 mb-1"
           style={{
             fontFamily: "Orbitron",
-            fontWeight: 400,
-            fontSize: "1.15rem",
-            color: "#e3dcb3",
-            opacity: 0.97,
-            marginTop: 10,
-            marginBottom: 3,
             textShadow: "0 0 7px #ffd70044",
           }}
         >
@@ -146,68 +122,45 @@ export default function LeaderboardPage() {
       </div>
       {/* Controls */}
       <div
+        className="flex flex-col sm:flex-row items-center gap-3 sm:gap-5 mb-6 sm:mb-8 font-medium text-sm sm:text-base md:text-lg"
         style={{
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-          gap: "1.2rem",
-          marginBottom: "1.5rem",
           fontFamily: "Orbitron",
-          fontWeight: 500,
-          fontSize: "1.03rem",
         }}
       >
         <button
           onClick={fetchLeaderboard}
           disabled={loading}
+          className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-md text-sm sm:text-base font-bold cursor-pointer transition-all duration-200 outline-none"
           style={{
-            padding: "0.75rem 1.5rem",
             background: loading ? "#333333" : "linear-gradient(90deg, #ffd700 0%, #f7e13e 100%)",
             color: loading ? "#b2b2b2" : "#191c1f",
-            border: "none",
-            borderRadius: "8px",
-            fontSize: "1rem",
-            fontWeight: "700",
-            cursor: loading ? "not-allowed" : "pointer",
             boxShadow: "0 1px 6px #ffe55633",
-            outline: "none",
-            transition: "all 0.2s ease",
             opacity: loading ? 0.7 : 1,
           }}
         >
           {loading ? "Refreshing..." : "🔄 Refresh"}
         </button>
-        <span style={{ color: "#ffd700", fontWeight: 500 }}>Sort by:</span>
+        <span className="text-[#ffd700] font-medium">Sort by:</span>
         <button
           onClick={() => setSortBy("score")}
+          className="px-2 sm:px-3 py-1 rounded-md text-sm sm:text-base font-bold cursor-pointer transition-all duration-200 outline-none"
           style={{
-            padding: "0.4rem 1.1rem",
             background: sortBy === "score" ? "#ffd700" : "#191c1f",
             color: sortBy === "score" ? "#191c1f" : "#ffd700",
             border: "2px solid #ffd700",
             borderRadius: "6px",
-            fontSize: "0.97rem",
-            fontWeight: 700,
-            cursor: "pointer",
-            outline: "none",
-            transition: "all 0.17s",
           }}
         >
           Score
         </button>
         <button
           onClick={() => setSortBy("miles")}
+          className="px-2 sm:px-3 py-1 rounded-md text-sm sm:text-base font-bold cursor-pointer transition-all duration-200 outline-none"
           style={{
-            padding: "0.4rem 1.1rem",
             background: sortBy === "miles" ? "#ffd700" : "#191c1f",
             color: sortBy === "miles" ? "#191c1f" : "#ffd700",
             border: "2px solid #ffd700",
             borderRadius: "6px",
-            fontSize: "0.97rem",
-            fontWeight: 700,
-            cursor: "pointer",
-            outline: "none",
-            transition: "all 0.17s",
           }}
         >
           Miles
@@ -215,39 +168,11 @@ export default function LeaderboardPage() {
       </div>
       {/* Leaderboard Box */}
       <div
-        style={{
-          background: "rgba(10,12,19,0.93)",
-          border: "2.5px solid #ffd700",
-          borderRadius: 18,
-          minWidth: 420,
-          maxWidth: 690,
-          width: "45vw",
-          minHeight: 170,
-          margin: "0 auto",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          boxShadow: "0 2px 24px #ffe55621",
-          marginBottom: "2rem",
-        }}
+        className="bg-opacity-93 bg-[#0a0c13] border border-[#ffd700] rounded-2xl min-w-[280px] max-w-full sm:min-w-[300px] sm:max-w-[450px] w-full sm:w-4/5 min-h-[170px] mx-auto flex flex-col justify-center items-center box-shadow-[0_2px_24px_#ffe55621] mb-8"
       >
         {/* Table header */}
         <div
-          style={{
-            color: "#ffd700",
-            fontWeight: 700,
-            fontSize: "1.14rem",
-            display: "grid",
-            gridTemplateColumns: "75px 1fr 120px 120px",
-            gap: "0.5rem",
-            padding: "1.1rem 0 1rem 0",
-            borderBottom: "2px solid #ffd700",
-            marginBottom: 8,
-            textAlign: "center",
-            letterSpacing: 1.4,
-            width: "100%",
-          }}
+          className="text-[#ffd700] font-bold text-lg sm:text-xl grid grid-cols-4 gap-2 sm:gap-3 px-3 sm:px-4 py-1 sm:py-1.5 border-b border-[#ffd700] mb-2 text-center letter-spacing-1.4"
         >
           <div>RANK</div>
           <div>USER</div>
@@ -257,15 +182,7 @@ export default function LeaderboardPage() {
         {/* Table rows */}
         {profiles.length === 0 ? (
           <div
-            style={{
-              fontFamily: "Orbitron",
-              color: "#e7e5ce",
-              fontSize: "1.1rem",
-              textAlign: "center",
-              padding: "3rem 0",
-              letterSpacing: 1.1,
-              width: "100%",
-            }}
+            className="font-orbitron text-[#e7e5ce] text-base sm:text-lg text-center py-6"
           >
             No scores yet. Be the first to play!
           </div>
@@ -277,38 +194,10 @@ export default function LeaderboardPage() {
             return (
               <div
                 key={i}
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "75px 1fr 120px 120px",
-                  gap: "0.5rem",
-                  padding: "0.88rem 0",
-                  borderBottom: i < 9 ? "1.3px solid #222" : "none",
-                  fontSize: "1.05rem",
-                  alignItems: "center",
-                  width: "100%",
-                  background: isUser
-                    ? "#212e19"
-                    : i % 2 === 0
-                    ? "#181c23"
-                    : "#131622",
-                  transition: "background-color 0.22s",
-                }}
+                className="grid grid-cols-4 gap-2 sm:gap-3 px-3 sm:px-4 py-1 sm:py-1.5 border-b border-[#222] last:border-none"
               >
                 <div
-                  style={{
-                    color: isEmpty
-                      ? "#494849"
-                      : i === 0
-                      ? "#ffd700"
-                      : i === 1
-                      ? "#c0c0c0"
-                      : i === 2
-                      ? "#cd7f32"
-                      : "#fff",
-                    fontWeight: 900,
-                    textAlign: "center",
-                    fontSize: "1.12rem",
-                  }}
+                  className="text-center font-bold text-lg sm:text-xl"
                 >
                   {isEmpty
                     ? "—"
@@ -321,34 +210,17 @@ export default function LeaderboardPage() {
                     : `#${i + 1}`}
                 </div>
                 <div
-                  style={{
-                    color: isEmpty ? "#494849" : "#fff",
-                    fontFamily: "Orbitron",
-                    fontWeight: 600,
-                    fontSize: "1.08rem",
-                    textAlign: "left",
-                    paddingLeft: "0.5rem",
-                  }}
+                  className="text-left font-orbitron font-semibold text-base sm:text-lg"
                 >
                   {isEmpty ? "—" : p.username || "(no name)"}
                 </div>
                 <div
-                  style={{
-                    color: isEmpty ? "#494849" : "#ffd700",
-                    textAlign: "right",
-                    fontWeight: 700,
-                    fontSize: "1.08rem",
-                  }}
+                  className="text-right font-bold text-base sm:text-lg"
                 >
                   {isEmpty ? "—" : p.score.toLocaleString()}
                 </div>
                 <div
-                  style={{
-                    color: isEmpty ? "#494849" : "#2bdafe",
-                    textAlign: "right",
-                    fontWeight: 700,
-                    fontSize: "1.08rem",
-                  }}
+                  className="text-right font-bold text-base sm:text-lg"
                 >
                   {isEmpty ? "—" : p.miles.toLocaleString()}
                 </div>
@@ -359,22 +231,19 @@ export default function LeaderboardPage() {
       </div>
       {/* Status and last refreshed */}
       <div
+        className="mt-1.5 sm:mt-2 text-center font-medium text-sm sm:text-base"
         style={{
-          marginTop: "0.7rem",
-          textAlign: "center",
-          fontSize: "1.03rem",
           color: status.startsWith("✅")
             ? "#4ade80"
             : status.startsWith("❌")
             ? "#f87171"
             : "#e3e3e3",
-          fontWeight: "500",
           fontFamily: "Orbitron",
           marginBottom: "1.7rem",
         }}
       >
         {status}
-        <div style={{ color: "#b1b2b7", fontWeight: 400, fontSize: "0.97rem", marginTop: 7 }}>
+        <div className="text-[#b1b2b7] font-normal text-xs sm:text-sm mt-1.5">
           Last refreshed: {lastFetched ? lastFetched.toLocaleTimeString() : "Never"}
         </div>
       </div>

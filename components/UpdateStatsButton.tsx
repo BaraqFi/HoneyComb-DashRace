@@ -99,14 +99,14 @@ export default function UpdateStatsButton({ score, miles }: { score: number, mil
   return (
     <div className="flex flex-col items-center">
       <button
-        className={`px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl mt-2 disabled:opacity-50 ${success ? "bg-green-600 hover:bg-green-700" : ""}`}
+        className={`px-3 sm:px-4 md:px-5 py-2 sm:py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl mt-2 disabled:opacity-50 text-sm sm:text-base md:text-lg ${success ? "bg-green-600 hover:bg-green-700" : ""}`}
         onClick={handleUpdate}
         disabled={loading || success}
       >
         {loading ? "Updating..." : success ? "Updated!" : "Update My Stats"}
       </button>
       {status && (
-        <div className={`mt-2 text-sm font-medium ${success ? "text-green-700" : "text-gray-900"}`}>
+        <div className={`mt-2 text-xs sm:text-sm md:text-base font-medium ${success ? "text-green-700" : "text-gray-900"}`}>
           {status}
         </div>
       )}

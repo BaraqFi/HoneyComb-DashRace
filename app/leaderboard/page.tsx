@@ -81,9 +81,9 @@ export default function LeaderboardPage() {
       }}
     >
       {/* Back button */}
-      <Link href="/" className="no-underline absolute left-8 sm:left-10 top-8 sm:top-10 z-10">
+      <Link href="/" className="no-underline absolute left-4 sm:left-6 top-4 sm:top-6 z-10">
         <button
-          className="bg-transparent border-2 border-[#2bdafe] rounded-lg text-[#2bdafe] font-bold text-sm sm:text-base md:text-lg px-4 sm:px-6 py-2 sm:py-3 cursor-pointer transition-all duration-200 outline-none"
+          className="bg-transparent border-2 border-[#2bdafe] rounded-lg text-[#2bdafe] font-bold text-sm sm:text-base md:text-lg px-3 sm:px-4 md:px-6 py-2 sm:py-3 cursor-pointer transition-all duration-200 outline-none"
           style={{
             fontFamily: "Orbitron",
           }}
@@ -100,9 +100,9 @@ export default function LeaderboardPage() {
         </button>
       </Link>
       {/* Header */}
-      <div className="mt-12 sm:mt-14 md:mt-16 mb-2 sm:mb-3 text-center">
+      <div className="mt-8 sm:mt-10 md:mt-12 mb-2 sm:mb-3 text-center">
         <h2
-          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black text-[#ffd700] m-0 tracking-[5px]"
+          className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black text-[#ffd700] m-0 tracking-[5px]"
           style={{
             fontFamily: "Orbitron",
             textShadow: "0 0 18px #ffd70088, 0 1px 12px #ffd70050",
@@ -111,7 +111,7 @@ export default function LeaderboardPage() {
           LEADERBOARD
         </h2>
         <div
-          className="font-normal text-sm sm:text-base md:text-lg lg:text-xl text-[#e3dcb3] opacity-97 mt-2 sm:mt-3 mb-1"
+          className="font-normal text-xs sm:text-sm md:text-base lg:text-lg text-[#e3dcb3] opacity-97 mt-2 sm:mt-3 mb-1"
           style={{
             fontFamily: "Orbitron",
             textShadow: "0 0 7px #ffd70044",
@@ -122,7 +122,7 @@ export default function LeaderboardPage() {
       </div>
       {/* Controls */}
       <div
-        className="flex flex-col sm:flex-row items-center gap-3 sm:gap-5 mb-6 sm:mb-8 font-medium text-sm sm:text-base md:text-lg"
+        className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 md:gap-5 mb-4 sm:mb-6 font-medium text-xs sm:text-sm md:text-base"
         style={{
           fontFamily: "Orbitron",
         }}

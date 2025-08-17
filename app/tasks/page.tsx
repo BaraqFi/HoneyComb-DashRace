@@ -12,9 +12,9 @@ export default function TasksPage() {
       }}
     >
       {/* Back button (top left) */}
-      <Link href="/" className="absolute top-8 sm:top-10 left-8 sm:left-10 z-10 no-underline">
+      <Link href="/" className="absolute top-4 sm:top-6 left-4 sm:left-6 z-10 no-underline">
         <button
-          className="bg-transparent border-2 border-[#b07cff] rounded-lg text-[#b07cff] font-bold text-sm sm:text-base md:text-lg px-4 sm:px-6 py-2 sm:py-3 cursor-pointer transition-all duration-200 outline-none"
+          className="bg-transparent border-2 border-[#b07cff] rounded-lg text-[#b07cff] font-bold text-sm sm:text-base md:text-lg px-3 sm:px-4 md:px-6 py-2 sm:py-3 cursor-pointer transition-all duration-200 outline-none"
           style={{
             fontFamily: "Orbitron",
           }}
@@ -31,20 +31,20 @@ export default function TasksPage() {
         </button>
       </Link>
       <div
-        className="bg-[rgba(32,18,54,0.93)] border-2 border-[#b07cff] rounded-2xl min-w-[280px] sm:min-w-[320px] md:min-w-[420px] max-w-[690px] w-[90vw] sm:w-[80vw] md:w-[60vw] lg:w-[45vw] min-h-[170px] flex flex-col justify-center items-center shadow-lg"
+        className="bg-[rgba(32,18,54,0.93)] border-2 border-[#b07cff] rounded-2xl min-w-[280px] sm:min-w-[320px] md:min-w-[420px] max-w-[690px] w-[90vw] sm:w-[80vw] md:w-[60vw] lg:w-[45vw] min-h-[160px] flex flex-col justify-center items-center shadow-lg"
         style={{
           boxShadow: "0 2px 24px #b07cff35",
         }}
       >
         <div
-          className="font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl text-center tracking-[1.1px] w-full p-6 sm:p-8 md:p-12"
+          className="font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl text-center tracking-[1.1px] w-full p-4 sm:p-6 md:p-8"
           style={{
             fontFamily: "Orbitron",
             color: "#c6baff",
           }}
         >
           No Missions Yet.
-          <div className="font-normal text-[#b07cff] text-sm sm:text-base md:text-lg lg:text-xl mt-3 sm:mt-4 tracking-[1px]">
+          <div className="font-normal text-[#b07cff] text-sm sm:text-base md:text-lg lg:text-xl mt-2 sm:mt-3 tracking-[1px]">
             Ready Your Fuel
           </div>
         </div>

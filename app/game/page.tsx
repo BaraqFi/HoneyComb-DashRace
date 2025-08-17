@@ -35,9 +35,9 @@ export default function GamePage() {
         }}
       >
         {/* Back button (top left) */}
-        <Link href="/" className="absolute top-8 sm:top-10 left-8 sm:left-10 z-10 no-underline">
+        <Link href="/" className="absolute top-4 sm:top-6 left-4 sm:left-6 z-10 no-underline">
           <button
-            className="bg-transparent border-2 border-[#a30c29] rounded-lg text-[#a30c29] font-bold text-sm sm:text-base md:text-lg px-4 sm:px-6 py-2 sm:py-3 cursor-pointer transition-all duration-200 outline-none"
+            className="bg-transparent border-2 border-[#a30c29] rounded-lg text-[#a30c29] font-bold text-sm sm:text-base md:text-lg px-3 sm:px-4 md:px-6 py-2 sm:py-3 cursor-pointer transition-all duration-200 outline-none"
             style={{
               fontFamily: "Orbitron",
             }}
@@ -54,13 +54,13 @@ export default function GamePage() {
           </button>
         </Link>
         <div
-          className="bg-[rgba(40,8,20,0.97)] border-2 border-[#a30c29] rounded-2xl min-w-[280px] sm:min-w-[320px] md:min-w-[410px] max-w-[530px] w-[90vw] min-h-[180px] mx-auto flex flex-col justify-center items-center shadow-lg p-6 sm:p-8 md:p-12"
+          className="bg-[rgba(40,8,20,0.97)] border-2 border-[#a30c29] rounded-2xl min-w-[280px] sm:min-w-[320px] md:min-w-[410px] max-w-[530px] w-[90vw] min-h-[160px] mx-auto flex flex-col justify-center items-center shadow-lg p-4 sm:p-6 md:p-8"
           style={{
             boxShadow: "0 2px 24px #b0273a35",
           }}
         >
           <h2
-            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-[#b0273a] mb-6 sm:mb-8 text-center tracking-[2px] mt-0"
+            className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-extrabold text-[#b0273a] mb-4 sm:mb-6 text-center tracking-[2px] mt-0"
             style={{
               fontFamily: "Orbitron",
               textShadow: "0 0 8px #b0273a77, 0 1px 20px #5a152a55",
@@ -68,9 +68,9 @@ export default function GamePage() {
           >
             Choose Your Mode
           </h2>
-          <div className="flex flex-col gap-4 sm:gap-5 w-full max-w-sm sm:max-w-md">
+          <div className="flex flex-col gap-3 sm:gap-4 w-full max-w-sm sm:max-w-md">
             <button
-              className="w-full font-bold text-sm sm:text-base md:text-lg uppercase py-3 sm:py-4 tracking-[1.9px] cursor-pointer transition-all duration-200 outline-none rounded-xl"
+              className="w-full font-bold text-sm sm:text-base md:text-lg uppercase py-2 sm:py-3 tracking-[1.9px] cursor-pointer transition-all duration-200 outline-none rounded-xl"
               style={{
                 background: darkRedGradient,
                 border: "none",
@@ -88,7 +88,7 @@ export default function GamePage() {
               Play Game
             </button>
             <button
-              className="w-full font-bold text-sm sm:text-base md:text-lg uppercase py-3 sm:py-4 tracking-[1.9px] cursor-pointer transition-all duration-200 outline-none rounded-xl mb-1"
+              className="w-full font-bold text-sm sm:text-base md:text-lg uppercase py-2 sm:py-3 tracking-[1.9px] cursor-pointer transition-all duration-200 outline-none rounded-xl mb-1"
               style={{
                 background: "rgba(0,0,0,0)",
                 border: "2.4px solid #a30c29",

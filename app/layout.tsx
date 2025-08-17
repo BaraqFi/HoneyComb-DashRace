@@ -19,7 +19,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <WalletConnectionProvider>
           {/* <UserProvider> */}
             {/* <NavBar /> */}
-            <main className="flex flex-col items-center pt-8">{children}</main>
+            <main className="flex flex-col items-center">{children}</main>
           {/* </UserProvider> */}
         </WalletConnectionProvider>
       </body>
